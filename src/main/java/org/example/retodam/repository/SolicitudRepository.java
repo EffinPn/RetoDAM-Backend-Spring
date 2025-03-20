@@ -1,4 +1,7 @@
 package org.example.retodam.repository;
 
-public interface SolicitudRepository {
+import org.example.retodam.model.Solicitud;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SolicitudRepository extends JpaRepository<Solicitud, Integer> {
 }

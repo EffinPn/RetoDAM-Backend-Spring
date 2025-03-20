@@ -1,4 +1,7 @@
 package org.example.retodam.repository;
 
-public interface UsuarioRepository {
+import org.example.retodam.model.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 }
