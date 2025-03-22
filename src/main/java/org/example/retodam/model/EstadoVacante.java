@@ -1,8 +1,8 @@
 package org.example.retodam.model;
 
 public enum EstadoVacante {
-    CREADA,
-    ASIGNADA,
-    CANCELADA
-
+    activa,
+    inactiva,
+    cerrada,
+    en_proceso
 }

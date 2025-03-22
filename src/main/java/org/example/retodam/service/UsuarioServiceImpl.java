@@ -17,4 +17,14 @@ public class UsuarioServiceImpl implements UsuarioService {
     public List<Usuario> obtenerUsuarios() {
         return usuarioRepository.findAll();
     }
+
+    @Override
+    public void addOrUpdateUsuario(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
+    @Override
+    public List<Usuario> encontrarPorPerfilesId(int id) {
+        return usuarioRepository.findByPerfiles_Id(id);
+    }
 }

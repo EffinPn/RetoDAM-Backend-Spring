@@ -39,6 +39,7 @@ public class Vacante {
     @JsonIgnore
     private List<Solicitud> solicitudes;
 
+
     public int getId_vacante() {
         return id_vacante;
     }

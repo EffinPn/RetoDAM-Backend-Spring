@@ -7,4 +7,5 @@ import java.util.List;
 public interface VacanteService {
 
     List<Vacante> obtenerVacantes();
+    void addOrUpdateVacante(Vacante vacante);
 }

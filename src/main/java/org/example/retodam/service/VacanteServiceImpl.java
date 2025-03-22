@@ -17,4 +17,9 @@ public class VacanteServiceImpl implements VacanteService {
     public List<Vacante> obtenerVacantes() {
         return vacanteRepository.findAll();
     }
+
+    @Override
+    public void addOrUpdateVacante(Vacante vacante) {
+        vacanteRepository.save(vacante);
+    }
 }

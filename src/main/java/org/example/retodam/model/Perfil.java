@@ -11,19 +11,20 @@ import java.util.List;
 public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_perfil;
+    @Column(name="id_perfil")
+    private int id;
     private String nombre;
 
     @ManyToMany (mappedBy = "perfiles", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Usuario> usuarios;
 
-    public int getId_perfil() {
-        return id_perfil;
+    public int getId() {
+        return id;
     }
 
-    public void setId_perfil(int id_perfil) {
-        this.id_perfil = id_perfil;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<Usuario> getUsuarios() {

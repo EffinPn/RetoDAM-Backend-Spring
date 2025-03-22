@@ -18,4 +18,14 @@ public class CategoriaServiceImpl implements CategoriaService {
     public List<Categoria> obtenerCategorias() {
         return categoriaRepository.findAll();
     }
+
+    @Override
+    public void addOrUpdateCategoria(Categoria categoria) {
+        categoriaRepository.save(categoria);
+    }
+
+    @Override
+    public void deleteCategoria(Categoria categoria) {
+        categoriaRepository.delete(categoria);
+    }
 }
