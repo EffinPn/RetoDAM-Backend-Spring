@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <!-- USUARIOS -->
+        <TextView
+            android:id="@+id/tituloUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Formulario de Registro USUARIOS"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/usernameEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Campo para el nombre de usuario -->
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de usuario"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/tituloUsuario"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Campo para el nombre -->
+        <EditText
+            android:id="@+id/nombreEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/usernameEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Campo para los apellidos -->
+        <EditText
+            android:id="@+id/apellidosEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Apellidos"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/nombreEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Campo para el correo electrónico -->
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/apellidosEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Campo para la contraseña -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/emailEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Botón para registrar -->
+        <Button
+            android:id="@+id/registrarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrar"
+            app:layout_constraintTop_toBottomOf="@id/passwordEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Login -->
+        <TextView
+            android:id="@+id/tituloLoginUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login USUARIO"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/registrarButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+        <!-- Campo para el correo electrónico -->
+        <EditText
+            android:id="@+id/emailLoginEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Email login"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/tituloLoginUsuario"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <!-- Campo para la contraseña -->
+        <EditText
+            android:id="@+id/passwordLoginEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña login"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/emailLoginEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Botón para realizar el login -->
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            app:layout_constraintTop_toBottomOf="@id/passwordLoginEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

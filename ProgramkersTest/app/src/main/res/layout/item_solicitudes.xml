@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Nombre de la Vacante -->
+        <TextView
+            android:id="@+id/solicitudIdVacante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Id Vacante"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:fontFamily="sans-serif-medium"
+            android:paddingBottom="4dp"/>
+
+        <!-- Nombre de la Vacante -->
+        <TextView
+            android:id="@+id/solicitudNombreVacante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de vacante"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:fontFamily="sans-serif-medium"
+            android:paddingBottom="4dp"/>
+
+        <!-- Estado de la solicitud -->
+        <TextView
+            android:id="@+id/solicitudEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado: Revisada o no"
+            android:textSize="14sp"
+            android:textColor="#FF5722"
+            android:paddingBottom="4dp"/>
+
+        <!-- Comentarios de la solicitud -->
+        <TextView
+            android:id="@+id/solicitudComentarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comentarios"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:paddingBottom="4dp"/>
+
+        <!-- Fecha de la solicitud -->
+        <TextView
+            android:id="@+id/solicitudFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha de solicitud: 01/01/2025"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:paddingBottom="4dp"/>
+
+        <!-- Botón de cancelar solicitud -->
+        <Button
+            android:id="@+id/solicitudCancelarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar solicitud"
+            android:layout_gravity="end"
+            android:textColor="#FF5722"
+            android:backgroundTint="#FFFFFF" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <!-- VACANTES -->
+        <TextView
+            android:id="@+id/tituloVacantes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Formulario de Registro VACANTES"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/empresaEditText"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Filtros de búsqueda -->
+        <EditText
+            android:id="@+id/empresaEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Filtrar por empresa"
+            app:layout_constraintTop_toBottomOf="@+id/tituloVacantes"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <EditText
+            android:id="@+id/categoriaEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Filtrar por categoría"
+            app:layout_constraintTop_toBottomOf="@id/empresaEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <EditText
+            android:id="@+id/descripcionEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Filtrar por descripción"
+            app:layout_constraintTop_toBottomOf="@id/categoriaEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- RecyclerView para mostrar las vacantes -->
+        <Button
+            android:id="@+id/buscarVacantesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar Vacantes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descripcionEditText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vacantesRecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/buscarVacantesButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tituloSolicitudes" />
+
+
+        <!-- SOLICITUDES -->
+        <TextView
+            android:id="@+id/tituloSolicitudes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mis Solicitudes"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/vacantesRecyclerView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Botón para consultar solicitudes -->
+        <Button
+            android:id="@+id/consultarSolicitudButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Consultar Solicitudes"
+            app:layout_constraintTop_toBottomOf="@id/tituloSolicitudes"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- RecyclerView para mostrar las solicitudes -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/solicitudesRecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/consultarSolicitudButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

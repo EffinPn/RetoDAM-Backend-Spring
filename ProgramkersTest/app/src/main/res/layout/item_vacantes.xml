@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Imagen de la vacante -->
+        <ImageView
+            android:id="@+id/imagenVacante"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Contenido de la vacante -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/numeroVacante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Numero Vacante"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/nombreVacante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre Vacante"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/empresaVacante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre de la empresa"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:textStyle="italic"/>
+
+            <TextView
+                android:id="@+id/descripcionVacante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripción de la vacante"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/salarioVacante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salario: $XXX"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/>
+
+        </LinearLayout>
+
+        <!-- Botón de Solicitar -->
+        <Button
+            android:id="@+id/solicitarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solicitar"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="#FF5722"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Información de la vacante -->
+        <TextView
+            android:id="@+id/textViewVacante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vacante:"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/vacanteNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre Vacante"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/vacanteDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción de vacante"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Comentarios de solicitud -->
+        <EditText
+            android:id="@+id/comentariosEditText"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Comentarios"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="16dp"/>
+
+        <!-- boton para añadir un archivo -->
+        <Button
+            android:id="@+id/btnAddArchivo"
+            android:layout_width="80pt"
+            android:layout_height="wrap_content"
+            android:text="Añadir archivo (CV)"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Botón de solicitar vacante -->
+        <Button
+            android:id="@+id/solicitarVacanteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Solicitar"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
