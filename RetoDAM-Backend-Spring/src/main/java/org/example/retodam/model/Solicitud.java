@@ -1,6 +1,7 @@
 package org.example.retodam.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -13,6 +14,7 @@ public class Solicitud {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_solicitud;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
     private String archivo;
     private String comentarios;

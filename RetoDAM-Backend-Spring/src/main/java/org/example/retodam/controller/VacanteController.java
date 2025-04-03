@@ -1,5 +1,6 @@
 package org.example.retodam.controller;
 
+import org.example.retodam.dto.VacanteDTO;
 import org.example.retodam.model.Solicitud;
 import org.example.retodam.model.Vacante;
 import org.example.retodam.service.VacanteService;
@@ -25,7 +26,9 @@ public class VacanteController {
 
         List<Vacante> vacantes = vacanteService.listarVacantesFiltros(empresa, categoria, descripcion);
 
-        if (!vacantes.isEmpty()) {
+        List<VacanteDTO> vacantesDTO = vacanteService.vacantesToDTO(vacantes);
+
+        if (!vacantesDTO.isEmpty()) {
             return new ResponseEntity<>(vacantes, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

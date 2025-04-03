@@ -1,5 +1,6 @@
 package org.example.retodam.controller;
 
+import org.example.retodam.dto.UsuarioDTO;
 import org.example.retodam.model.Usuario;
 import org.example.retodam.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,13 @@ public class UsuarioController {
 
     // Endpoint de registro de usuario ANDROID
     @PostMapping("/registro")
-    public ResponseEntity<String> registrarUsuario(@RequestBody Usuario usuario) {
-        if(usuarioService.findByUsername(usuario.getUsername()) != null){
+    public ResponseEntity<String> registrarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        if(usuarioService.findByUsername(usuarioDTO.getUsername()) != null){
             return new ResponseEntity<>("El username elegido ya existe", HttpStatus.CONFLICT);
-        } else if(usuarioService.findByEmail(usuario.getEmail()) != null){
+        } else if(usuarioService.findByEmail(usuarioDTO.getEmail()) != null){
             return new ResponseEntity<>("El email elegido ya existe", HttpStatus.CONFLICT);
         } else {
-            usuarioService.registrarUsuario(usuario);
+            usuarioService.registrarUsuario(usuarioDTO);
             return new ResponseEntity<>("Usuario registrado con éxito", HttpStatus.CREATED);
         }
     }
@@ -31,7 +32,11 @@ public class UsuarioController {
     @GetMapping("/login")
     public ResponseEntity<Object> getLogin(@RequestParam String email, @RequestParam String password){
 
-        Usuario usuario = usuarioService.getLogin(email, password);
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setEmail(email);
+        usuarioDTO.setPassword(password);
+
+        Usuario usuario = usuarioService.getLogin(usuarioDTO);
 
         if (usuario!=null){
             return new ResponseEntity<>(usuario, HttpStatus.OK);
