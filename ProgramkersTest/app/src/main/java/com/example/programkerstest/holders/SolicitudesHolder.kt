@@ -11,8 +11,8 @@ class SolicitudesHolder (view: View, private val deleteSolicitud: (Int) -> Unit)
 
     fun bind(solicitudes : Solicitud){
         // textos de recyclerview de solicitudes
-        binding.solicitudIdVacante.text = "Nº de vacante: ${solicitudes.vacante.idVacante}"
-        binding.solicitudNombreVacante.text = solicitudes.vacante.nombre // así viajamos desde solicitud a vacante, y cogemos el nombre
+        binding.solicitudIdVacante.text = "Nº de vacante: ${solicitudes.idVacante}"
+        binding.solicitudNombreVacante.text = solicitudes.nombreVacante // así viajamos desde solicitud a vacante, y cogemos el nombre
         binding.solicitudEstado.text = "Estado: ${solicitudes.estado}"
         binding.solicitudComentarios.text = solicitudes.comentarios
         binding.solicitudFecha.text = "Fecha: ${solicitudes.fecha}"

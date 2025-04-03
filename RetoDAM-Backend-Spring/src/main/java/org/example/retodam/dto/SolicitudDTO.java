@@ -15,6 +15,7 @@ public class SolicitudDTO {
 
     private String username;
     private int id_vacante;
+    private String nombre_vacante;
 
 
     public Date getFecha() {
@@ -57,14 +58,6 @@ public class SolicitudDTO {
         this.username = username;
     }
 
-    public int getId_vacante() {
-        return id_vacante;
-    }
-
-    public void setId_vacante(int id_vacante) {
-        this.id_vacante = id_vacante;
-    }
-
     public int getId_solicitud() {
         return id_solicitud;
     }
@@ -73,7 +66,23 @@ public class SolicitudDTO {
         this.id_solicitud = id_solicitud;
     }
 
-    public SolicitudDTO(int id_solicitud, Date fecha, String archivo, String comentarios, Integer estado, String username, int id_vacante) {
+    public int getId_vacante() {
+        return id_vacante;
+    }
+
+    public void setId_vacante(int id_vacante) {
+        this.id_vacante = id_vacante;
+    }
+
+    public String getNombre_vacante() {
+        return nombre_vacante;
+    }
+
+    public void setNombre_vacante(String nombre_vacante) {
+        this.nombre_vacante = nombre_vacante;
+    }
+
+    public SolicitudDTO(int id_solicitud, Date fecha, String archivo, String comentarios, Integer estado, String username, int id_vacante, String nombre_vacante) {
         this.id_solicitud = id_solicitud;
         this.fecha = fecha;
         this.archivo = archivo;
@@ -81,5 +90,9 @@ public class SolicitudDTO {
         this.estado = estado;
         this.username = username;
         this.id_vacante = id_vacante;
+        this.nombre_vacante = nombre_vacante;
+    }
+
+    public SolicitudDTO() {
     }
 }

@@ -1,7 +1,6 @@
 package org.example.retodam.controller;
 
 import org.example.retodam.dto.VacanteDTO;
-import org.example.retodam.model.Solicitud;
 import org.example.retodam.model.Vacante;
 import org.example.retodam.service.VacanteService;
 import org.springframework.beans.factory.annotation.Autowired;

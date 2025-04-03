@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } catch (e: Exception) {
-                // En caso de error, mostramos el mensaje de error con el mensaje real de la excepción
+                // En caso de error, mostramos el mensaje de error de la excepción
                 Toast.makeText(this@MainActivity, "Error en la conexión: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }

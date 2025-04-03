@@ -29,15 +29,8 @@ public class SolicitudServiceImpl implements SolicitudService {
     @Override
     public Solicitud mandarSolicitud(SolicitudDTO solicitudDTO) {
         Usuario usuario = usuarioService.findByUsername(solicitudDTO.getUsername());
-        if (usuario == null) {
-            throw new RuntimeException("Usuario no encontrado");  // Lanzar excepción si no existe
-        }
-
-        // Verificar si la vacante existe
+        
         Vacante vacante = vacanteService.getById(solicitudDTO.getId_vacante());
-        if (vacante == null) {
-            throw new RuntimeException("Vacante no encontrada");  // Lanzar excepción si no existe
-        }
 
         // Crear la entidad Solicitud a partir del DTO
         Solicitud solicitud = new Solicitud();
@@ -71,7 +64,8 @@ public class SolicitudServiceImpl implements SolicitudService {
                     solicitud.getComentarios(),
                     solicitud.getEstado(),
                     solicitud.getUsuario().getUsername(),
-                    solicitud.getVacante().getId_vacante()
+                    solicitud.getVacante().getId_vacante(),
+                    solicitud.getVacante().getNombre()
             );
 
             solicitudesDTO.add(solicitudDTO);

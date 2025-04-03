@@ -2,7 +2,6 @@ package org.example.retodam.service;
 
 import org.example.retodam.dto.SolicitudDTO;
 import org.example.retodam.model.Solicitud;
-import org.example.retodam.model.Vacante;
 
 import java.util.List;
 

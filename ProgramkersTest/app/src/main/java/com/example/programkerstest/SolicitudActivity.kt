@@ -34,9 +34,6 @@ class SolicitudActivity: AppCompatActivity() {
         // Nos traemos la vacante seleccionada y el usuario logeado
         vacante = intent.getParcelableExtra("vacante")!!
         usuario = intent.getParcelableExtra("usuario")!!
-        // Agregar logs para depuración
-        Log.d("SolicitudActivity", "Recibido vacante: ${vacante?.nombre}")
-        Log.d("SolicitudActivity", "Recibido usuario: ${usuario?.username}")
 
         // Relacionamos con los campos del xml
         vacanteNombreTextView = findViewById(R.id.vacanteNombre)
@@ -68,11 +65,12 @@ class SolicitudActivity: AppCompatActivity() {
         val solicitud = Solicitud(
             idSolicitud = 0,
             fecha = formattedDate,
-            archivo = "",
+            archivo = "soy un boton para insertar cosas, aunque no funciono aún",
             comentarios = comentario,
             estado = 1,
-            vacante = vacante,
-            username = usuario
+            idVacante = vacante.idVacante,
+            nombreVacante = vacante.nombre,
+            username = usuario.username
         )
 
         lifecycleScope.launch {
@@ -82,15 +80,14 @@ class SolicitudActivity: AppCompatActivity() {
                 if (response.isSuccessful) {
                     // Si la solicitud fue exitosa, mostramos un mensaje de éxito
                     Toast.makeText(this@SolicitudActivity, "Solicitud enviada correctamente", Toast.LENGTH_SHORT).show()
-                    finish()  // Finalizamos la actividad actual (o puedes redirigir a otra actividad)
+                    finish()  // Finalizamos la actividad actual y volvemos a la anterior
                 } else {
-                    // Si la solicitud falla, mostramos un mensaje de error detallado
+                    // Si la solicitud falla, mostramos un mensaje de error
                     val errorMessage = response.errorBody()?.string()
-                    Log.e("SolicitudActivity", "Error al enviar solicitud: $errorMessage")
                     Toast.makeText(this@SolicitudActivity, "Error al enviar la solicitud", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                // Capturamos cualquier excepción y mostramos un mensaje de error
+                // Mensaje de error
                 Toast.makeText(this@SolicitudActivity, "Error al procesar la solicitud: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }

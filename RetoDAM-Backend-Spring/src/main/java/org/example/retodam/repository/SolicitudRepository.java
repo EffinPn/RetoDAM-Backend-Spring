@@ -1,7 +1,6 @@
 package org.example.retodam.repository;
 
 import org.example.retodam.model.Solicitud;
-import org.example.retodam.model.Vacante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
