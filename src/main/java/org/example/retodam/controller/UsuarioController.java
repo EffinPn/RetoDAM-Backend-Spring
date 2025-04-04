@@ -1,14 +1,12 @@
 package org.example.retodam.controller;
 
+import org.example.retodam.dto.UsuarioDTO;
 import org.example.retodam.model.Usuario;
 import org.example.retodam.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("usuarios")
@@ -17,25 +15,37 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @GetMapping("/getall")
-    public ResponseEntity<List<Usuario>> getAll() {
-        return new ResponseEntity<>(usuarioService.obtenerUsuarios(), HttpStatus.OK);
-    }
 
-    @PostMapping("/addorupdate")
-    public String addorupdate(@RequestBody Usuario usuario) {
-        usuarioService.addOrUpdateUsuario(usuario);
-        return "Usuario agregado/actualizado";
-    }
 
-    @GetMapping("/getbyperfiles")
-    public ResponseEntity<List<Usuario>> getByPerfiles(@RequestParam int id_perfil) {
-        List<Usuario> users = usuarioService.encontrarPorPerfilesId(id_perfil);
-        if(!users.isEmpty()) {
-            return new ResponseEntity<>(users, HttpStatus.OK);
+
+
+    // Endpoint de registro de usuario ANDROID
+    /*@PostMapping("/registro")
+    public ResponseEntity<String> registrarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        if(usuarioService.findByUsername(usuarioDTO.getUsername()) != null){
+            return new ResponseEntity<>("El username elegido ya existe", HttpStatus.CONFLICT);
+        } else if(usuarioService.findByEmail(usuarioDTO.getEmail()) != null){
+            return new ResponseEntity<>("El email elegido ya existe", HttpStatus.CONFLICT);
         } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            usuarioService.registrarUsuario(usuarioDTO);
+            return new ResponseEntity<>("Usuario registrado con éxito", HttpStatus.CREATED);
         }
     }
 
+    // Endpoint de login -> ponemos que el response es un object para poder mandar un string en caso de que el login sea erroneo
+    @GetMapping("/login")
+    public ResponseEntity<Object> getLogin(@RequestParam String email, @RequestParam String password){
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setEmail(email);
+        usuarioDTO.setPassword(password);
+
+        Usuario usuario = usuarioService.getLogin(usuarioDTO);
+
+        if (usuario!=null){
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Correo o contraseña incorrectos", HttpStatus.UNAUTHORIZED);
+        }
+    }*/
 }

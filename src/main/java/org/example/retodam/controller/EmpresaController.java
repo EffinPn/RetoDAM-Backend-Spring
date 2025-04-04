@@ -18,22 +18,4 @@ public class EmpresaController {
     @Autowired
     EmpresaService empresaService;
 
-    @GetMapping("/getall")
-    public ResponseEntity<List<Empresa>> getAll() {
-        return new ResponseEntity<>(empresaService.obtenerEmpresas(), HttpStatus.OK);
-    }
-
-    @PostMapping("/addorupdate")
-    public String AddOrUpdateEmpresa(@RequestBody Empresa empresa) {
-        empresaService.addOrUpdateEmpresa(empresa);
-        return "Empresa agregada/actualizada";
-    }
-
-    @PostMapping("/delete")
-    public String DeleteEmpresa(@RequestBody Empresa empresa) {
-        empresaService.borrarEmpresa(empresa);
-        return "Empresa eliminada";
-    }
-
-
 }

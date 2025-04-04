@@ -1,11 +1,14 @@
 package org.example.retodam.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
+
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name = "categorias")
@@ -17,8 +20,9 @@ public class Categoria {
     private String descripcion;
 
     @OneToMany (mappedBy = "categoria")
-    @JsonIgnore
+    @JsonBackReference("vaccat")
     private List<Vacante> vacantes;
+
 
     public int getId_categoria() {
         return id_categoria;
@@ -28,12 +32,12 @@ public class Categoria {
         this.id_categoria = id_categoria;
     }
 
-    public List<Vacante> getVacantes() {
-        return vacantes;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setVacantes(List<Vacante> vacantes) {
-        this.vacantes = vacantes;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
@@ -44,11 +48,11 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public String getNombre() {
-        return nombre;
+    public List<Vacante> getVacantes() {
+        return vacantes;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setVacantes(List<Vacante> vacantes) {
+        this.vacantes = vacantes;
     }
 }

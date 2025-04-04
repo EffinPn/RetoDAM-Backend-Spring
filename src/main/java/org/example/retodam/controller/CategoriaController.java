@@ -17,21 +17,4 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @GetMapping("/getall")
-    public ResponseEntity<List<Categoria>> getAll() {
-        return new ResponseEntity<>(categoriaService.obtenerCategorias(), HttpStatus.OK);
-    }
-
-    @PostMapping("/addorupdate")
-    public String AddOrUpdateCategoria(@RequestBody Categoria categoria) {
-        categoriaService.addOrUpdateCategoria(categoria);
-        return "Categoria agregada/actualizada";
-    }
-
-    @PostMapping("/delete")
-    public String DeleteCategoria(@RequestBody Categoria categoria) {
-        categoriaService.deleteCategoria(categoria);
-        return "Empresa eliminada";
-    }
-
 }

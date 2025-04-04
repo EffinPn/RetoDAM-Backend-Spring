@@ -1,15 +1,21 @@
 package org.example.retodam.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 
-import java.util.Date;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.io.Serializable;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements UserDetails {
     @Id
     private String username;
     private String nombre;
@@ -17,10 +23,12 @@ public class Usuario {
     private String email;
     private String password;
     private int enabled;
+    private String role;
+    @JsonFormat(pattern = "yyyy-MM-dd") // formato de fecha (año-mes-día)
     private Date fecha_registro;
 
-    @OneToMany (mappedBy = "usuario")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "usuario")
+    @JsonBackReference("usersol")
     private List<Solicitud> solicitudes;
 
     @ManyToMany
@@ -31,6 +39,35 @@ public class Usuario {
     )
     @JsonIgnore
     private List<Perfil> perfiles;
+
+    public Usuario() {}
+
+    public Usuario(String username, String nombre, String apellidos, String email, String password, Date fecha_registro) {
+        this.username = username;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.password = password;
+        this.fecha_registro = fecha_registro;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (role == null || role.trim().isEmpty()) {
+            return Collections.emptyList(); // Retornar lista vacía si no hay rol
+        }
+        // Convertir el rol a GrantedAuthority, agregando "ROLE_" si no está presente
+        String authority = role.startsWith("ROLE_") ? role : "ROLE_" + role;
+        return Collections.singletonList(new SimpleGrantedAuthority(authority));
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
 
     public String getUsername() {
         return username;
