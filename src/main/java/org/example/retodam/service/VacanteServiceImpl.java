@@ -21,6 +21,8 @@ public class VacanteServiceImpl implements VacanteService {
         return vacanteRepository.listarVacantesFiltros(empresa,categoria,descripcion);
     }
 
+
+
     // Para convertir lo de la BBDD a DTO
     @Override
     public List<VacanteDTO> vacantesToDTO(List<Vacante> vacantes) {
@@ -44,6 +46,11 @@ public class VacanteServiceImpl implements VacanteService {
             vacantesDTO.add(vacanteDTO);
         }
         return vacantesDTO;
+    }
+
+    @Override
+    public List<Vacante> consultarVacantes() {
+        return vacanteRepository.findAll();
     }
 
 

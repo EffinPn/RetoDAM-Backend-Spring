@@ -11,7 +11,7 @@ public interface VacanteService {
     List<Vacante> listarVacantesFiltros(String empresa, String categoria, String descripcion);
 
     List<VacanteDTO> vacantesToDTO(List<Vacante> vacantes);
-
+    List<Vacante> consultarVacantes();
     // buscar vacante para solicitud
     Vacante getById(int id);
 }

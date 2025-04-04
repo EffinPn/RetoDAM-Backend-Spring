@@ -17,6 +17,12 @@ public class VacanteController {
     @Autowired
     VacanteService vacanteService;
 
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<Vacante>> getAll() {
+        return new ResponseEntity<>(vacanteService.consultarVacantes(), HttpStatus.OK);
+    }
+
     // Endpoint para buscar Vacantes con filtros ANDROID
     @GetMapping("/buscarFiltros")
     public ResponseEntity<List<Vacante>> listarVacantesFiltros(@RequestParam(required = false) String empresa,
