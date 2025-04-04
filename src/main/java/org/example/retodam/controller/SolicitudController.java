@@ -1,8 +1,9 @@
 package org.example.retodam.controller;
 
+import org.example.retodam.dto.SolicitudDTO;
 import org.example.retodam.model.Solicitud;
-import org.example.retodam.model.Vacante;
 import org.example.retodam.service.SolicitudService;
+import org.example.retodam.service.UsuarioService;
 import org.example.retodam.service.VacanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,26 +19,46 @@ public class SolicitudController {
     @Autowired
     SolicitudService solicitudService;
 
-    @GetMapping("/getall")
-    public ResponseEntity<List<Solicitud>> getAll() {
-        return new ResponseEntity<>(solicitudService.obtenerSolicitudes(), HttpStatus.OK);
+    @Autowired
+    UsuarioService usuarioService;
+
+    @Autowired
+    VacanteService vacanteService;
+
+
+    // Mandar solicitud ANDROID
+    @PostMapping("/solicitar")
+    public ResponseEntity<String> mandarSolicitud(@RequestBody SolicitudDTO solicitudDTO){
+        if(solicitudService.mandarSolicitud(solicitudDTO) != null){
+            return new ResponseEntity<>("Solicitud enviada correctamente", HttpStatus.OK);
+        } else{
+            return new ResponseEntity<>("No se ha podido enviar la solicitud", HttpStatus.NOT_FOUND);
+        }
     }
 
-    @PostMapping("/addorupdate")
-    public String addorupdate(@RequestBody Solicitud solicitud) {
-        solicitudService.addOrUpdateSolicitud(solicitud);
-        return "Solicitud agregada/actualizada";
-    }
 
-    @GetMapping("/getbyvacante")
-    public ResponseEntity<List<Solicitud>> getByVacante(Vacante vacante) {
+    // Consultar solicitudes por usuario ANDROID
+    @GetMapping("/getByUsuario")
+    public ResponseEntity<List<SolicitudDTO>> getSolicitudesUsuario(@RequestParam String username){
 
-        List<Solicitud> solicitudes = solicitudService.encontrarPorVacante(vacante);
+        List<Solicitud> solicitudes = solicitudService.getSolicitudesUsuario(username);
+
         if (!solicitudes.isEmpty()) {
-            return new ResponseEntity<>(solicitudes, HttpStatus.OK);
+            List<SolicitudDTO> solicitudesDTO = solicitudService.solicitudesToDTO(solicitudes);
+
+            return new ResponseEntity<>(solicitudesDTO, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
+    // Eliminar solicitudes por ID ANDROID
+    @DeleteMapping("/cancelarSolicitud")
+    public ResponseEntity<String> eliminarSolicitud(@RequestParam int id){
+        if(solicitudService.eliminarSolicitud(id)){
+            return new ResponseEntity<>("Solicitud eliminada correctamente", HttpStatus.OK);
+        } else{
+            return new ResponseEntity<>("No se ha encontrado la solicitud", HttpStatus.NOT_FOUND);
+        }
+    }
 }

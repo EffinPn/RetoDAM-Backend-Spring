@@ -1,7 +1,7 @@
 package org.example.retodam.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -12,19 +12,20 @@ public class Solicitud {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_solicitud;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
     private String archivo;
     private String comentarios;
     private Integer estado;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name = "username")
-    @JsonIgnore
+    @JsonManagedReference("usersol")
     private Usuario usuario;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name = "id_vacante")
-    @JsonIgnore
+    @JsonManagedReference("vacsol")
     private Vacante vacante;
 
     public Usuario getUsuario() {

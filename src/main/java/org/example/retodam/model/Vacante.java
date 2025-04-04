@@ -1,7 +1,6 @@
 package org.example.retodam.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -27,16 +26,16 @@ public class Vacante {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
-    @JsonIgnore
+    @JsonManagedReference("vaccat")
     private Categoria categoria;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa")
-    @JsonIgnore
+    @JsonManagedReference("vacemp")
     private Empresa empresa;
 
     @OneToMany (mappedBy = "vacante")
-    @JsonIgnore
+    @JsonBackReference("vacsol")
     private List<Solicitud> solicitudes;
 
 

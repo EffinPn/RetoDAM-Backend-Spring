@@ -18,8 +18,4 @@ public class PerfilController {
     @Autowired
     PerfilService perfilService;
 
-    @GetMapping("/getall")
-    public ResponseEntity<List<Perfil>> getAll() {
-        return new ResponseEntity<>(perfilService.obtenerPerfiles(), HttpStatus.OK);
-    }
 }
