@@ -3,14 +3,11 @@ package com.example.programkerstest
 import com.example.programkerstest.model.Solicitud
 import com.example.programkerstest.model.Usuario
 import com.example.programkerstest.model.Vacante
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
-import retrofit2.http.Headers
 import retrofit2.http.POST
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -32,8 +29,7 @@ interface ApiService {
 
     // Solicitud de vacante
     @POST("solicitudes/solicitar")
-    @Headers("Content-Type: application/json")
-    suspend fun addSolicitud(@Body solicitud: Solicitud): Response<Solicitud>
+    suspend fun addSolicitud(@Body solicitud: Solicitud): Response<String>
 
     // Consultar solicitudes del usuario
     @GET("solicitudes/getByUsuario")

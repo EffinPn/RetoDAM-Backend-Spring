@@ -51,7 +51,6 @@ class ClienteActivity : AppCompatActivity() {
 
         // Verifica que el usuario no sea null
         if (usuario == null) {
-            Log.e("ClienteActivity", "Usuario es null")
             Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
             return
         }
@@ -143,7 +142,6 @@ class ClienteActivity : AppCompatActivity() {
 
     private fun buscarSolicitudesUsuario(userNameSolicitud : String){
         if (userNameSolicitud.isNullOrEmpty()) {
-            Log.e("ClienteActivity", "Username es nulo o vacío")
             Toast.makeText(this@ClienteActivity, "No se puede consultar sin un username", Toast.LENGTH_SHORT).show()
             return
         }

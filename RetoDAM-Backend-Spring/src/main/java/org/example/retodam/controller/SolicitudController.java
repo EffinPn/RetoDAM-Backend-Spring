@@ -2,8 +2,6 @@ package org.example.retodam.controller;
 
 import org.example.retodam.dto.SolicitudDTO;
 import org.example.retodam.model.Solicitud;
-import org.example.retodam.model.Usuario;
-import org.example.retodam.model.Vacante;
 import org.example.retodam.service.SolicitudService;
 import org.example.retodam.service.UsuarioService;
 import org.example.retodam.service.VacanteService;
@@ -31,13 +29,10 @@ public class SolicitudController {
     // Mandar solicitud ANDROID
     @PostMapping("/solicitar")
     public ResponseEntity<String> mandarSolicitud(@RequestBody SolicitudDTO solicitudDTO){
-        try {
-            // Llamar al service para mandar la solicitud
-            solicitudService.mandarSolicitud(solicitudDTO);
+        if(solicitudService.mandarSolicitud(solicitudDTO) != null){
             return new ResponseEntity<>("Solicitud enviada correctamente", HttpStatus.OK);
-        } catch (RuntimeException e) {
-            // En caso de error (usuario o vacante no encontrados)
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        } else{
+            return new ResponseEntity<>("No se ha podido enviar la solicitud", HttpStatus.NOT_FOUND);
         }
     }
 

@@ -8,6 +8,7 @@ data class Solicitud(
     val archivo: String,
     val comentarios: String,
     val estado: Int,
-    @SerializedName("vacante") val vacante: Vacante,
-    @SerializedName("usuario") val username: Usuario
+    @SerializedName("id_vacante") val idVacante: Int,
+    @SerializedName("nombre_vacante") val nombreVacante: String,
+    @SerializedName("username") val username: String
 )
