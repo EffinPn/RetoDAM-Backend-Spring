@@ -13,7 +13,8 @@ public interface SolicitudService {
     // Consultar solicitudes por usuario ANDROID
     List<Solicitud> getSolicitudesUsuario(String username);
     List<SolicitudDTO> solicitudesToDTO(List<Solicitud> solicitudes);
-
+    List<Solicitud> obtenerSolicitudes();
     // Eliminar solicitud ANDROID
     boolean eliminarSolicitud(int id);
+    List<Solicitud> obtenerSolicitudesVacanteId(int id);
 }

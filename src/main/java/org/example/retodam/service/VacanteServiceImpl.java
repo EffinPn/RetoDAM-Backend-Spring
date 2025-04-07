@@ -1,7 +1,11 @@
 package org.example.retodam.service;
 
 import org.example.retodam.dto.VacanteDTO;
+import org.example.retodam.model.Categoria;
+import org.example.retodam.model.Empresa;
 import org.example.retodam.model.Vacante;
+import org.example.retodam.repository.CategoriaRepository;
+import org.example.retodam.repository.EmpresaRepository;
 import org.example.retodam.repository.VacanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +18,10 @@ public class VacanteServiceImpl implements VacanteService {
 
     @Autowired
     VacanteRepository vacanteRepository;
+    @Autowired
+    EmpresaRepository empresaRepository;
+    @Autowired
+    CategoriaRepository categoriaRepository;
 
     // Listar vacantes con filtros ANDROID
     @Override
@@ -21,6 +29,11 @@ public class VacanteServiceImpl implements VacanteService {
         return vacanteRepository.listarVacantesFiltros(empresa,categoria,descripcion);
     }
 
+    @Override
+    public String saveVacante(Vacante vacante) {
+        vacanteRepository.save(vacante);
+        return "Exito desde la API";
+    }
 
 
     // Para convertir lo de la BBDD a DTO
@@ -39,7 +52,7 @@ public class VacanteServiceImpl implements VacanteService {
                     vacante.isDestacado(),
                     vacante.getImagen(),
                     vacante.getDetalles(),
-                    vacante.getCategoria().getId_categoria(),
+                    vacante.getCategoria().getIdCategoria(),
                     vacante.getEmpresa().getId_empresa()
             );
 
@@ -54,10 +67,50 @@ public class VacanteServiceImpl implements VacanteService {
     }
 
 
+
+
     // Buscar vacante para solicitud
     @Override
     public Vacante getById(int id) {
         return vacanteRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Vacante> consultarPorIdEmpresa(Integer id) {
+        return vacanteRepository.findByEmpresa_IdEmpresa(id);
+    }
+
+    @Override
+    public Vacante editarVacanteDesdeDTO(VacanteDTO dto) {
+        Vacante vacante = vacanteRepository.findByIdVacante(dto.getId());
+        vacante.setNombre(dto.getNombre());
+        vacante.setDescripcion(dto.getDescripcion());
+        vacante.setSalario(dto.getSalario());
+        vacante.setDetalles(dto.getDetalles());
+        vacante.setEstatus(dto.getEstatus());
+        return vacante;
+    }
+
+    @Override
+    public Vacante crearVacanteDesdeDTO(VacanteDTO dto) {
+        Vacante vacante = new Vacante();
+        vacante.setIdVacante(0);
+        vacante.setNombre(dto.getNombre());
+        vacante.setDescripcion(dto.getDescripcion());
+        vacante.setSalario(dto.getSalario());
+        vacante.setFecha(dto.getFecha());
+        vacante.setDetalles(dto.getDetalles());
+        vacante.setEstatus(dto.getEstatus());
+        vacante.setImagen(dto.getImagen());
+        vacante.setDestacado(dto.isDestacado());
+        vacante.setEmpresa(empresaRepository.findByIdEmpresa(dto.getId_empresa()).orElseThrow());
+        vacante.setCategoria(categoriaRepository.findById(dto.getId_categoria()).orElseThrow());
+        return vacante;
+    }
+
+    @Override
+    public Vacante encontrarPorId(Integer id) {
+        return vacanteRepository.findByIdVacante(id);
     }
 
 }

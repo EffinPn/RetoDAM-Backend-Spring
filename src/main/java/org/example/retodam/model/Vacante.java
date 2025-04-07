@@ -12,7 +12,8 @@ import java.util.List;
 public class Vacante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_vacante;
+    @Column(name="id_vacante")
+    private int idVacante;
     private String nombre;
     private String descripcion;
     private Date fecha;
@@ -26,25 +27,25 @@ public class Vacante {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
-    @JsonManagedReference("vaccat")
+    @JsonBackReference("categoria-vacantes")
     private Categoria categoria;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa")
-    @JsonManagedReference("vacemp")
+    @JsonBackReference("empresa-vacantes")
     private Empresa empresa;
 
     @OneToMany (mappedBy = "vacante")
-    @JsonBackReference("vacsol")
+    @JsonManagedReference("vacante-solicitudes")
     private List<Solicitud> solicitudes;
 
 
-    public int getId_vacante() {
-        return id_vacante;
+    public int getIdVacante() {
+        return idVacante;
     }
 
-    public void setId_vacante(int id_vacante) {
-        this.id_vacante = id_vacante;
+    public void setIdVacante(int id_vacante) {
+        this.idVacante = id_vacante;
     }
 
     public String getNombre() {

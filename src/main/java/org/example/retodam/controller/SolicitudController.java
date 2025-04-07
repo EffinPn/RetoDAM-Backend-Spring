@@ -1,6 +1,7 @@
 package org.example.retodam.controller;
 
 import org.example.retodam.dto.SolicitudDTO;
+import org.example.retodam.dto.VacanteDTO;
 import org.example.retodam.model.Solicitud;
 import org.example.retodam.service.SolicitudService;
 import org.example.retodam.service.UsuarioService;
@@ -60,5 +61,15 @@ public class SolicitudController {
         } else{
             return new ResponseEntity<>("No se ha encontrado la solicitud", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<Solicitud>> getAll(){
+        return new ResponseEntity<>(solicitudService.obtenerSolicitudes(), HttpStatus.OK);
+    }
+
+    @PostMapping("/getbyvacante")
+    public ResponseEntity<List<Solicitud>> getByVacante(@RequestBody int id){
+        return new ResponseEntity<>(solicitudService.obtenerSolicitudesVacanteId(id), HttpStatus.OK);
     }
 }

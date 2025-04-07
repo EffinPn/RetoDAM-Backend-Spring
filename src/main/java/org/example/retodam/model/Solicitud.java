@@ -1,5 +1,6 @@
 package org.example.retodam.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -20,12 +21,12 @@ public class Solicitud {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name = "username")
-    @JsonManagedReference("usersol")
+    @JsonBackReference("usuario-solicitudes")
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name = "id_vacante")
-    @JsonManagedReference("vacsol")
+    @JsonBackReference("vacante-solicitudes")
     private Vacante vacante;
 
     public Usuario getUsuario() {

@@ -1,6 +1,7 @@
 package org.example.retodam.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,21 +11,22 @@ import java.util.List;
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_empresa;
+    @Column (name= "id_empresa")
+    private int idEmpresa;
     private String razon_social;
     private String direccion_fiscal;
     private String pais;
 
     @OneToMany (mappedBy = "empresa")
-    @JsonBackReference("vacemp")
+    @JsonManagedReference("empresa-vacantes")
     private List<Vacante> vacantes;
 
     public int getId_empresa() {
-        return id_empresa;
+        return idEmpresa;
     }
 
     public void setId_empresa(int id_empresa) {
-        this.id_empresa = id_empresa;
+        this.idEmpresa = id_empresa;
     }
 
     public List<Vacante> getVacantes() {

@@ -1,6 +1,6 @@
 package org.example.retodam.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -15,21 +15,22 @@ import java.util.List;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_categoria;
+    @Column (name= "id_categoria")
+    private int idCategoria;
     private String nombre;
     private String descripcion;
 
     @OneToMany (mappedBy = "categoria")
-    @JsonBackReference("vaccat")
+    @JsonManagedReference("categoria-vacantes")
     private List<Vacante> vacantes;
 
 
-    public int getId_categoria() {
-        return id_categoria;
+    public int getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setId_categoria(int id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setIdCategoria(int id_categoria) {
+        this.idCategoria = id_categoria;
     }
 
     public String getNombre() {

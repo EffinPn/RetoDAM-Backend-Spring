@@ -52,7 +52,16 @@ public class AuthController {
             );
             SecurityContextHolder.getContext().setAuthentication(auth);
             String token = jwtUtil.createToken(auth);
-            return ResponseEntity.ok(new LoginResponse(token));
+
+            Integer empresa = null;
+            Object user = auth.getPrincipal();
+
+            if (user instanceof Usuario) {
+                Usuario usuario = (Usuario) user;
+                empresa = usuario.getIdempresa();
+            }
+
+            return ResponseEntity.ok(new LoginResponse(token, empresa));
         } catch (Exception e) {
             // Cualquier otro error durante la autenticación
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al logear - " + e.getMessage());

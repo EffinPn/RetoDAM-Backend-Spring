@@ -4,6 +4,7 @@ package org.example.retodam.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,8 +28,11 @@ public class Usuario implements UserDetails {
     @JsonFormat(pattern = "yyyy-MM-dd") // formato de fecha (año-mes-día)
     private Date fecha_registro;
 
+    @Column(name="id_empresa")
+    private Integer idempresa;
+
     @OneToMany(mappedBy = "usuario")
-    @JsonBackReference("usersol")
+    @JsonManagedReference("usuario-solicitudes")
     private List<Solicitud> solicitudes;
 
     @ManyToMany
@@ -139,5 +143,13 @@ public class Usuario implements UserDetails {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Integer getIdempresa() {
+        return idempresa;
+    }
+
+    public void setIdempresa(Integer idempresa) {
+        this.idempresa = idempresa;
     }
 }

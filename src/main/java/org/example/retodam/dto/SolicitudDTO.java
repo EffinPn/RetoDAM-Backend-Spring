@@ -18,6 +18,7 @@ public class SolicitudDTO {
     private String nombre_vacante;
 
 
+
     public Date getFecha() {
         return fecha;
     }

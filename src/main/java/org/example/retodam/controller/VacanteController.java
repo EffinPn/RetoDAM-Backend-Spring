@@ -23,6 +23,18 @@ public class VacanteController {
         return new ResponseEntity<>(vacanteService.consultarVacantes(), HttpStatus.OK);
     }
 
+    @PostMapping("/crear")
+    public String crear(@RequestBody VacanteDTO vacantedto) {
+        vacanteService.saveVacante(vacanteService.crearVacanteDesdeDTO(vacantedto));
+        return "éxito agregando la vacante";
+    }
+
+    @PatchMapping("/actualizar")
+    public String actualizar(@RequestBody VacanteDTO vacantedto) {
+        vacanteService.saveVacante(vacanteService.editarVacanteDesdeDTO(vacantedto));
+        return "éxito agregando la vacante";
+    }
+
     // Endpoint para buscar Vacantes con filtros ANDROID
     @GetMapping("/buscarFiltros")
     public ResponseEntity<List<Vacante>> listarVacantesFiltros(@RequestParam(required = false) String empresa,
@@ -38,5 +50,10 @@ public class VacanteController {
         } else {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+    }
+
+    @PostMapping ("porEmpresa")
+    ResponseEntity<List<Vacante>> listarPorEmpresa(@RequestBody Integer id) {
+        return new ResponseEntity<>(vacanteService.consultarPorIdEmpresa(id), HttpStatus.OK);
     }
 }

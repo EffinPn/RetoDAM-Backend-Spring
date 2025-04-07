@@ -8,7 +8,7 @@ import java.util.Date;
 
 
 public class VacanteDTO {
-
+    private int id;
     private String nombre;
     private String descripcion;
     private Date fecha;
@@ -24,6 +24,14 @@ public class VacanteDTO {
     private int id_categoria;
     private int id_empresa;
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;

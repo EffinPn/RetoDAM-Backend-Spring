@@ -5,6 +5,7 @@ import org.example.retodam.security.JwtAutheticationFilter;
 import org.example.retodam.security.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -66,6 +67,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/vacantes/**").hasRole("EMPRESA")
+                        .requestMatchers("/solicitudes/**").hasRole("EMPRESA")
                         .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());

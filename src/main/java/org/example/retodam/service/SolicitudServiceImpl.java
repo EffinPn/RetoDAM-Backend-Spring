@@ -64,13 +64,18 @@ public class SolicitudServiceImpl implements SolicitudService {
                     solicitud.getComentarios(),
                     solicitud.getEstado(),
                     solicitud.getUsuario().getUsername(),
-                    solicitud.getVacante().getId_vacante(),
+                    solicitud.getVacante().getIdVacante(),
                     solicitud.getVacante().getNombre()
             );
 
             solicitudesDTO.add(solicitudDTO);
         }
         return solicitudesDTO;
+    }
+
+    @Override
+    public List<Solicitud> obtenerSolicitudes() {
+        return solicitudRepository.findAll();
     }
 
     // Eliminar solicitud por ID ANDROID
@@ -81,5 +86,10 @@ public class SolicitudServiceImpl implements SolicitudService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<Solicitud> obtenerSolicitudesVacanteId(int id) {
+        return solicitudRepository.findByVacante_IdVacante(id);
     }
 }

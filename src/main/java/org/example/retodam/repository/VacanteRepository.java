@@ -1,5 +1,6 @@
 package org.example.retodam.repository;
 
+import org.example.retodam.model.Empresa;
 import org.example.retodam.model.Vacante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,5 +17,6 @@ public interface VacanteRepository extends JpaRepository<Vacante, Integer> {
             "(v.descripcion LIKE %:descripcion% OR :descripcion IS NULL) AND " +
             "v.estatus = 'activa'")
     List<Vacante> listarVacantesFiltros(@Param("empresa") String empresa, @Param("categoria") String categoria, @Param("descripcion") String descripcion);
-
+    List<Vacante> findByEmpresa_IdEmpresa(Integer empresa);
+    Vacante findByIdVacante(Integer idVacante);
 }

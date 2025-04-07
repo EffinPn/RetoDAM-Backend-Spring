@@ -17,4 +17,8 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
+    @GetMapping("/getall")
+    public ResponseEntity<List<Categoria>> getAll() {
+        return new ResponseEntity<>(categoriaService.encontrarTodas(), HttpStatus.OK);
+    }
 }

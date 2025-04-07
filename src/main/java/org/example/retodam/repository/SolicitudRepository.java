@@ -13,4 +13,5 @@ public interface SolicitudRepository extends JpaRepository<Solicitud, Integer> {
     @Query("FROM Solicitud s WHERE s.usuario.username = :username")
     List<Solicitud> getSolicitudesUsuario(@Param("username") String username);
 
+    List<Solicitud> findByVacante_IdVacante(Integer id);
 }
