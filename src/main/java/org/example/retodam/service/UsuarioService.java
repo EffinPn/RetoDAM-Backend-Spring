@@ -3,6 +3,7 @@ package org.example.retodam.service;
 import org.example.retodam.dto.UsuarioDTO;
 import org.example.retodam.model.Usuario;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -23,4 +24,6 @@ public interface UsuarioService {
 
     boolean existsByEmail(String email);
     boolean existsByUsername(String username);
+    List<Usuario> getAll();
+    String saveUsuario(Usuario usuario);
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,5 +53,16 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public boolean existsByUsername(String username) {
         return usuarioRepository.existsByUsername(username);
+    }
+
+    @Override
+    public List<Usuario> getAll() {
+        return usuarioRepository.findAll();
+    }
+
+    @Override
+    public String saveUsuario(Usuario usuario) {
+        usuarioRepository.save(usuario);
+        return "Exito actualizando";
     }
 }

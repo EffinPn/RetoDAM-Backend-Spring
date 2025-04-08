@@ -20,7 +20,7 @@ public class Categoria {
     private String nombre;
     private String descripcion;
 
-    @OneToMany (mappedBy = "categoria")
+    @OneToMany (mappedBy = "categoria", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonManagedReference("categoria-vacantes")
     private List<Vacante> vacantes;
 

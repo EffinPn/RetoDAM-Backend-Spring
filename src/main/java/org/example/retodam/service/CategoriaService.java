@@ -9,4 +9,7 @@ import java.util.Optional;
 public interface CategoriaService {
     Optional<Categoria> encontrarPorId(int id);
     List<Categoria> encontrarTodas();
+    String saveCategoria(Categoria categoria);
+    String deleteCategoria(Integer id);
+
 }

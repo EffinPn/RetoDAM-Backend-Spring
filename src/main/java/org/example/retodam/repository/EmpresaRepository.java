@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface EmpresaRepository extends JpaRepository<Empresa, Integer> {
 
     Optional<Empresa> findByIdEmpresa(Integer id);
+    void deleteEmpresaByIdEmpresa(int idEmpresa);
 }

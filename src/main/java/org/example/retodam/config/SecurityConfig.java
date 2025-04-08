@@ -67,8 +67,11 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/vacantes/**").hasRole("EMPRESA")
-                        .requestMatchers("/solicitudes/**").hasRole("EMPRESA")
+                        .requestMatchers(HttpMethod.POST, "/vacantes/**").hasAnyRole("EMPRESA", "ADMIN")
+                        .requestMatchers("/solicitudes/**").hasAnyRole("EMPRESA", "ADMIN")
+                        .requestMatchers("/usuarios/**").hasRole("ADMIN")
+                        .requestMatchers("/empresas/**").hasRole("ADMIN")
+                        .requestMatchers("/categorias/**").hasRole("ADMIN")
                         .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());
